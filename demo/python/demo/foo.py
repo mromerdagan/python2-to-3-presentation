@@ -1,12 +1,14 @@
+from __future__ import print_function
+from __future__ import division
 
 def print_hello(name):
-	print "Hello",
-	print name
+	print("Hello", end=' ')
+	print(name)
 
 def filter_even(l):
-	ret = filter(lambda x: x % 2 == 0, l)
+	ret = [x for x in l if x % 2 == 0]
 	return ret
 
 def floor_division(x, y):
-	ret = x / y
+	ret = x // y
 	return ret
