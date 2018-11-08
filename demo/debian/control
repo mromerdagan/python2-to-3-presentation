@@ -5,7 +5,10 @@ Maintainer: Omer Dagan <omer.dagan@harmonicinc.com>
 Build-Depends: debhelper (>= 9),
  dh-python,
  python-all,
+ python3,
+ python3-all,
  python-setuptools,
+ python3-setuptools,
 Standards-Version: 3.9.8
 Homepage: https://github.com/mromerdagan
 
@@ -22,4 +25,12 @@ Suggests: python-demo-doc
 Description: demo package (Python 2)
  .
  This package installs the library for Python 2.
+
+Package: python3-demo
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}
+Suggests: python-demo-doc
+Description: demo package (Python 3)
+ .
+ This package installs the library for Python 3.
 

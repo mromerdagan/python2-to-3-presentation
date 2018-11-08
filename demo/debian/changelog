@@ -1,3 +1,9 @@
+demo (1.0-3) unstable; urgency=medium
+
+  * Add python3-demo binary package
+
+ -- Omer Dagan <omer.dagan@harmonicinc.com>  Sun, 11 Nov 2018 14:09:26 +0200
+
 demo (1.0-2) unstable; urgency=medium
 
   * Make python library python2/python3 compat
