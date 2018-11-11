@@ -1,3 +1,9 @@
+demo (1.0-4) unstable; urgency=medium
+
+  * Migrate python runnable "script" to python3
+
+ -- Omer Dagan <omer.dagan@harmonicinc.com>  Sun, 11 Nov 2018 14:10:27 +0200
+
 demo (1.0-3) unstable; urgency=medium
 
   * Add python3-demo binary package

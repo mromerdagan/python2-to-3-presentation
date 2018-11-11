@@ -1,22 +1,22 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 
 from demo import foo
 
-print "Script!"
-print "======="
+print("Script!")
+print("=======")
 
 foo.print_hello('Class')
 
-print "----"
+print("----")
 l = [1,2,2,3,4,7,9,11,13,17,19,21,22]
-print "orig list is: {}".format(str(l))
+print("orig list is: {}".format(str(l)))
 
 filtered = foo.filter_even(l)
-print "filtered is: {}".format(str(filtered))
+print("filtered is: {}".format(str(filtered)))
 
-print "----"
+print("----")
 x, y = (2,3)
-print "Floor division ({}, {}): {}".format(x, y, foo.floor_division(x, y))
+print("Floor division ({}, {}): {}".format(x, y, foo.floor_division(x, y)))
 
 x, y = (9,3)
-print "Floor division ({}, {}): {}".format(x, y, foo.floor_division(x, y))
+print("Floor division ({}, {}): {}".format(x, y, foo.floor_division(x, y)))
