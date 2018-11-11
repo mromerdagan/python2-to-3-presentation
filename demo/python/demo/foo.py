@@ -1,5 +1,3 @@
-from __future__ import print_function
-from __future__ import division
 
 def print_hello(name):
 	print("Hello", end=' ')

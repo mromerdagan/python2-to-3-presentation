@@ -1,3 +1,9 @@
+demo (1.0-6) unstable; urgency=medium
+
+  * Make libs pure python3
+
+ -- Omer Dagan <omer.dagan@harmonicinc.com>  Sun, 11 Nov 2018 14:29:07 +0200
+
 demo (1.0-5) unstable; urgency=medium
 
   * Give up python2 version binary package
