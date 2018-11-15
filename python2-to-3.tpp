@@ -74,7 +74,7 @@
   This is a killer feature that will speed up app using IO by order of magnitude
 ---
 
-* Type annotations
+* Type annotations (aka statically typed python)
 
 --beginoutput
 def hello(name: str) -> None:
@@ -322,13 +322,15 @@ should become:
 
 	http://python-future.org/compatible_idioms.html
 
---newpage Migration Startegy
---huge Migration Startegy
+--newpage Migration Strategy
+--huge Migration Strategy
 --horline
 
 Note: The key thing here is to do it **gradually**. At no point of time would
 
 you want your package to suuport niether python2 nor python3. Keep it in mind.
+
+(Replace a wheel while driving...)
 ---
 
 1) Make you python libraires dual
@@ -374,6 +376,11 @@ you want your package to suuport niether python2 nor python3. Keep it in mind.
   b- Add binary package: "Package: python3-demo" and change dependencies to 
   
      python3 as necessary
+---
+
+  Consult this article:
+
+     - https://wiki.debian.org/Python/Pybuild
 
 --newpage Migrate runnables
 --heading Migrate runnables
