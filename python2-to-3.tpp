@@ -16,10 +16,10 @@
 1) Motivation
 ---
 
-2) Key differences between Python2 and Python3
+2) Key differences between Python2 and Python3 (syntax & semantics)
 ---
 
-3) Migration strategy
+3) Migration strategy (zero downtime)
 ---
 
 4) Migration tools
@@ -100,6 +100,43 @@ def hello(name: str) -> None:
 * Data classes- a decorator and functions for automatically adding generated 
 
   special methods such as __init__(), __repr__() and comparison operators.
+---
+This
+--beginoutput  
+class InventoryItem:
+	'''Class for keeping track of an item in inventory.'''
+	def __init__(self, name, unit_price, quantity_on_hand):
+		self.name = name
+		self.unit_price = unit_price
+		self.quantity_on_hand = quantity_on_hand
+	
+	def __repr__(self):
+		return (f'{self.__class__.__name__}'
+			f'(name={self.name!r}, unit_price={self.unit_price!r}, quantity_on_hand={self.quantity_on_hand!r})')
+	
+	def __eq__(self, other):
+		if other.__class__ is not self.__class__:
+			return NotImplemented
+		return (self.name, self.unit_price, self.quantity_on_hand) == (other.name, other.unit_price, other.quantity_on_hand)
+	
+	def total_cost(self) -> float:
+	    return self.unit_price * self.quantity_on_hand
+--endoutput
+
+becomes:
+--newpage Motivation
+--heading Why ??
+--beginoutput  
+@dataclass
+class InventoryItem:
+    '''Class for keeping track of an item in inventory.'''
+    name: str
+    unit_price: float
+    quantity_on_hand: int = 0
+
+    def total_cost(self) -> float:
+        return self.unit_price * self.quantity_on_hand
+--endoutput
 
   Check out this tutorial:
 
@@ -128,11 +165,8 @@ New: print(x, end=" ")  # Appends a space instead of a newline
 Old: print              # Prints a newline
 New: print()            # You must call the function!
 
-Old: print >>sys.stderr, "fatal error"
+Old: print >> sys.stderr, "fatal error"
 New: print("fatal error", file=sys.stderr)
-
-Old: print (x, y)       # prints repr((x, y))
-New: print((x, y))      # Not the same as print(x, y)!
 --endoutput
 
 ---
@@ -249,7 +283,7 @@ Python3:
 
 	- In python2 you could mix unicode and str (8 bit strings), iff the str
 
-	  sed only 7 bit (ASCII). Otherwise it would have generated UnicodeDecodeError
+	  used only 7 bit (ASCII). Otherwise it would have generated UnicodeDecodeError
 
 	- In python3 any attempt to mix text and data shall result in TypeError
 
@@ -285,7 +319,7 @@ Example 2:
 
 Example 3:
 
-In python 2 the following snipped would be fine, however in python3 should me altered:
+In python 2 the following snippet would be fine, however in python3 should be altered:
 --beginoutput
 >>> r = subprocess.check_output("ls") # <------ This returnes bytes now
 >>> fh = open("/tmp/b", "w")
@@ -318,7 +352,7 @@ should become:
 	https://docs.python.org/3/whatsnew/3.0.html
 ---
 
-* Another good refernce:
+* Another good refernce (cheat seet style):
 
 	http://python-future.org/compatible_idioms.html
 
@@ -330,7 +364,7 @@ Note: The key thing here is to do it **gradually**. At no point of time would
 
 you want your package to suuport niether python2 nor python3. Keep it in mind.
 
-(Replace a wheel while driving...)
+(Replace a wheel while driving: https://youtu.be/SVGgvevWnls?t=23)
 ---
 
 1) Make you python libraires dual
@@ -349,6 +383,9 @@ you want your package to suuport niether python2 nor python3. Keep it in mind.
 
 --newpage Make python library dual
 --heading Make python library dual
+---
+
+* Use from __future__ import ?
 ---
 
 * Use helper tools such as 2to3, python2-futurize (from package python-future)
