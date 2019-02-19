@@ -395,6 +395,12 @@ you want your package to suuport niether python2 nor python3. Keep it in mind.
 ---
 
 * In our example: python2-futurize --stage{12} python
+---
+
+* Check subprocess calls for encoding hasards.
+---
+
+* Also- check open() calls for encoding
 
 --newpage Generate python3-foo
 --heading Generate python3-foo in addition to python-foo
